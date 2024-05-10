@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbrg7hbsagnf2"]
+[gd_scene load_steps=5 format=3 uid="uid://bbrg7hbsagnf2"]
 
 [ext_resource type="Script" path="res://src/index/index.gd" id="1_cbe8m"]
 [ext_resource type="FontFile" uid="uid://djvhpjbf7msdr" path="res://Assets/Font/Dragon FREE.ttf" id="1_vw824"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aj4u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bnka"]
 bg_color = Color(0.548963, 0.548963, 0.548962, 1)
@@ -46,13 +48,24 @@ text = "Novo Projeto"
 layout_mode = 2
 text = "Configurações"
 
-[node name="Documentação" type="Button" parent="style/root"]
+[node name="style-doc" type="PanelContainer" parent="style/root"]
 layout_mode = 2
-text = "Documentação"
 
-[node name="Github" type="Button" parent="style/root"]
+[node name="doc" type="LinkButton" parent="style/root/style-doc"]
 layout_mode = 2
-text = "Veja mais do projeto"
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxFlat_4aj4u")
+text = "Documentação"
+uri = "https://brcrazycraft.github.io/Poneglyph-Doc/index.html"
+
+[node name="style-git" type="PanelContainer" parent="style/root"]
+layout_mode = 2
+
+[node name="git" type="LinkButton" parent="style/root/style-git"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Repositorio"
+uri = "https://github.com/BrCrazycraft/Poneglyph"
 
 [node name="configurações" type="PanelContainer" parent="."]
 visible = false
@@ -127,6 +140,5 @@ text = "Salvar"
 
 [connection signal="pressed" from="style/root/Novo Projeto" to="." method="_on_novo_projeto_pressed"]
 [connection signal="pressed" from="style/root/Config" to="." method="_on_config_pressed"]
-[connection signal="pressed" from="style/root/Documentação" to="." method="_on_documentação_pressed"]
 [connection signal="pressed" from="configurações/Config/mensagem/PanelContainer/painel/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="configurações/Config/mensagem/btn_salvar" to="." method="_on_btn_salvar_pressed"]

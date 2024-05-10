@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cupt0ejnibud3"]
+[gd_scene load_steps=7 format=3 uid="uid://cupt0ejnibud3"]
 
 [ext_resource type="Script" path="res://src/workstation/index.gd" id="1_hnuve"]
 [ext_resource type="CodeHighlighter" uid="uid://blbdcrhls1owv" path="res://Assets/HighLight/logica.tres" id="1_li8ea"]
 [ext_resource type="Script" path="res://src/gemini/Api.gd" id="2_1nfqs"]
 [ext_resource type="PackedScene" uid="uid://cwny48r00hxf5" path="res://src/workstation/node/container/SuperTree.tscn" id="3_ogifx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qe8a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwa7f"]
 bg_color = Color(0.6, 0.6, 0.6, 0.709804)
@@ -28,11 +30,15 @@ layout_mode = 2
 [node name="menu" type="HBoxContainer" parent="root/style-menu"]
 layout_mode = 2
 
-[node name="doc" type="Button" parent="root/style-menu/menu"]
+[node name="style-doc" type="PanelContainer" parent="root/style-menu/menu"]
 layout_mode = 2
-size_flags_horizontal = 0
-text = "Documentação
-"
+
+[node name="doc" type="LinkButton" parent="root/style-menu/menu/style-doc"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxFlat_4qe8a")
+text = "Documentação"
+uri = "https://brcrazycraft.github.io/Poneglyph-Doc/index.html"
 
 [node name="sair" type="Button" parent="root/style-menu/menu"]
 layout_mode = 2
