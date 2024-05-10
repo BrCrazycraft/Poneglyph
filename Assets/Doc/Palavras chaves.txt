@@ -1,0 +1,12 @@
+Loops
+If
+Variaveis
+funções
+classes
+
+palavras chaves
+
+classe -> Classe
+fun -> Função
+variavel -> Declara uma variavel
+importar -> Importa uma biblioteca

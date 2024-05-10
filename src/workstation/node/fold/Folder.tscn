@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://jw3bk6jrklm5"]
+
+[ext_resource type="Script" path="res://src/workstation/node/fold/Folder.gd" id="1_asfc3"]
+
+[node name="Folder" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 35.0
+grow_horizontal = 2
+size_flags_vertical = 4
+script = ExtResource("1_asfc3")
+
+[node name="root" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="menu" type="HBoxContainer" parent="root"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="btn_name" type="Button" parent="root/menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "<Nome>"
+
+[node name="btn_config" type="Button" parent="root/menu"]
+layout_mode = 2
+text = "Config"
+
+[node name="childs" type="GridContainer" parent="root"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 16
+columns = 2
+
+[connection signal="pressed" from="root/menu/btn_name" to="." method="_on_btn_name_pressed"]
+[connection signal="pressed" from="root/menu/btn_config" to="." method="_on_btn_config_pressed"]
