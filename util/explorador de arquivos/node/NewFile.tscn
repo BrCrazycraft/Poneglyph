@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1tmrlo8k5tmc"]
+
+[ext_resource type="Script" path="res://util/explorador de arquivos/script_node/NewFile.gd" id="1_2gtjq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff8id"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ry1en"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djxgs"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruq33"]
+bg_color = Color(0.862745, 0.862745, 0.862745, 1)
+
+[node name="NewFile" type="Window"]
+title = "Novo arquivo"
+initial_position = 2
+size = Vector2i(400, 100)
+script = ExtResource("1_2gtjq")
+
+[node name="style" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ff8id")
+
+[node name="root" type="VBoxContainer" parent="style"]
+layout_mode = 2
+
+[node name="name" type="HBoxContainer" parent="style/root"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="style/root/name"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Name:"
+
+[node name="new_name" type="LineEdit" parent="style/root/name"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxFlat_ry1en")
+placeholder_text = "Digete o nome aqui"
+
+[node name="tipo" type="OptionButton" parent="style/root"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_djxgs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ruq33")
+item_count = 4
+selected = 1
+popup/item_0/text = "Texto"
+popup/item_0/id = 0
+popup/item_1/text = "PseudoCódigo"
+popup/item_1/id = 1
+popup/item_2/text = "Python"
+popup/item_2/id = 2
+popup/item_3/text = "Java"
+popup/item_3/id = 3
+popup/item_3/disabled = true
+
+[node name="criar" type="Button" parent="style/root"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Criar"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="text_submitted" from="style/root/name/new_name" to="." method="_on_new_name_text_submitted"]
+[connection signal="item_selected" from="style/root/tipo" to="." method="_on_tipo_item_selected"]
+[connection signal="pressed" from="style/root/criar" to="." method="_on_criar_pressed"]

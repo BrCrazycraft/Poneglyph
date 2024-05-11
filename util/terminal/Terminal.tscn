@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkypkcii3uktp"]
+
+[ext_resource type="Script" path="res://util/terminal/Terminal.gd" id="1_7lmx8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_el1wy"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Terminal" type="Window"]
+title = "Codigo no terminal"
+initial_position = 2
+size = Vector2i(500, 300)
+unresizable = true
+script = ExtResource("1_7lmx8")
+
+[node name="style" type="ScrollContainer" parent="."]
+offset_right = 500.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_el1wy")
+horizontal_scroll_mode = 0
+
+[node name="root" type="BoxContainer" parent="style"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="load" type="RichTextLabel" parent="style/root"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+text = "Carregando codigo..."
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

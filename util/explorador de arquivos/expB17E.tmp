@@ -1,0 +1,173 @@
+[gd_scene load_steps=13 format=3 uid="uid://dfrhxnafkcl57"]
+
+[ext_resource type="Script" path="res://util/explorador de arquivos/script_node/index.gd" id="1_xupm6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdi2d"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dhli"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ang2i"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nopsd"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ejjn"]
+bg_color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twsph"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_n8ho7"]
+device = -1
+ctrl_pressed = true
+keycode = 78
+
+[sub_resource type="Shortcut" id="Shortcut_8lbr7"]
+events = [SubResource("InputEventKey_n8ho7")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rkvt"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqjbs"]
+bg_color = Color(0.0295066, 0.0295066, 0.0295065, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3svok"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="explorador" type="Node"]
+
+[node name="Index" type="Window" parent="."]
+title = "File Explore"
+initial_position = 2
+size = Vector2i(650, 500)
+script = ExtResource("1_xupm6")
+
+[node name="style" type="PanelContainer" parent="Index"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdi2d")
+
+[node name="root" type="VBoxContainer" parent="Index/style"]
+layout_mode = 2
+
+[node name="style_nav" type="PanelContainer" parent="Index/style/root"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1dhli")
+
+[node name="navigation" type="HBoxContainer" parent="Index/style/root/style_nav"]
+layout_mode = 2
+
+[node name="voltar" type="Button" parent="Index/style/root/style_nav/navigation"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ang2i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nopsd")
+text = "Voltar"
+
+[node name="diretorio" type="LineEdit" parent="Index/style/root/style_nav/navigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ejjn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_twsph")
+text = "c:/"
+placeholder_text = "diretorio"
+
+[node name="nova pasta" type="Button" parent="Index/style/root/style_nav/navigation"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ang2i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nopsd")
+shortcut = SubResource("Shortcut_8lbr7")
+text = "Nova pasta"
+
+[node name="style_area" type="ScrollContainer" parent="Index/style/root"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="grid" type="FlowContainer" parent="Index/style/root/style_area"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+alignment = 1
+
+[node name="syle_menu" type="PanelContainer" parent="Index/style/root"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5rkvt")
+
+[node name="menu" type="HBoxContainer" parent="Index/style/root/syle_menu"]
+layout_mode = 2
+
+[node name="selecionado" type="Label" parent="Index/style/root/syle_menu/menu"]
+layout_mode = 2
+text = "Arquivo:"
+
+[node name="item_name" type="LineEdit" parent="Index/style/root/syle_menu/menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<Nome>"
+placeholder_text = "<Nome>"
+
+[node name="confirmar" type="Button" parent="Index/style/root/syle_menu/menu"]
+layout_mode = 2
+text = "Selecionar"
+
+[node name="pasta_atual" type="Button" parent="Index/style/root/syle_menu/menu"]
+layout_mode = 2
+text = "Atual"
+
+[node name="nova_pasta" type="PopupPanel" parent="."]
+initial_position = 2
+size = Vector2i(300, 50)
+
+[node name="style" type="PanelContainer" parent="nova_pasta"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -21.0
+offset_right = -4.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hqjbs")
+
+[node name="root" type="VBoxContainer" parent="nova_pasta/style"]
+layout_mode = 2
+
+[node name="nome" type="HBoxContainer" parent="nova_pasta/style/root"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="nome" type="Label" parent="nova_pasta/style/root/nome"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Nome:"
+
+[node name="rename" type="LineEdit" parent="nova_pasta/style/root/nome"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_3svok")
+placeholder_text = "Nome da pasta"
+
+[connection signal="pressed" from="Index/style/root/style_nav/navigation/voltar" to="Index" method="_on_voltar_pressed"]
+[connection signal="text_submitted" from="Index/style/root/style_nav/navigation/diretorio" to="Index" method="_on_diretorio_text_submitted"]
+[connection signal="pressed" from="Index/style/root/style_nav/navigation/nova pasta" to="Index" method="_on_nova_pasta_pressed"]
+[connection signal="popup_hide" from="nova_pasta" to="Index" method="_on_nova_pasta_popup_hide"]
+[connection signal="text_submitted" from="nova_pasta/style/root/nome/rename" to="Index" method="_on_rename_text_submitted"]

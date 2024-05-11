@@ -1,0 +1,26 @@
+[gd_resource type="CodeHighlighter" format=3 uid="uid://bn20hnx42gv1j"]
+
+[resource]
+resource_local_to_scene = true
+number_color = Color(0.545098, 0.913725, 0.992157, 1)
+symbol_color = Color(1, 0.721569, 0.423529, 1)
+function_color = Color(1, 0.47451, 0.776471, 1)
+member_variable_color = Color(0.309804, 0.952941, 0.47451, 1)
+keyword_colors = {
+"cada": Color(0.741176, 0.576471, 0.976471, 1),
+"caso": Color(0.741176, 0.576471, 0.976471, 1),
+"e": Color(1, 0.47451, 0.541176, 1),
+"em": Color(1, 0.47451, 0.541176, 1),
+"enquanto": Color(0.741176, 0.576471, 0.976471, 1),
+"falso": Color(1, 0.47451, 0.541176, 1),
+"fun": Color(0.741176, 0.576471, 0.976471, 1),
+"nulo": Color(1, 0.47451, 0.541176, 1),
+"não": Color(1, 0.47451, 0.541176, 1),
+"ou": Color(1, 0.47451, 0.541176, 1),
+"quebra": Color(0.741176, 0.576471, 0.976471, 1),
+"retorna": Color(0.741176, 0.576471, 0.976471, 1),
+"se": Color(0.741176, 0.576471, 0.976471, 1),
+"talvez": Color(0.741176, 0.576471, 0.976471, 1),
+"variavel": Color(0.741176, 0.576471, 0.976471, 1),
+"verdadeiro": Color(1, 0.47451, 0.541176, 1)
+}

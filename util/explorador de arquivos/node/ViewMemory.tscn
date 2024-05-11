@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1k2125anfahc"]
+
+[ext_resource type="Script" path="res://util/explorador de arquivos/script_node/ViewMemory.gd" id="1_bqjea"]
+[ext_resource type="Texture2D" uid="uid://dogiw4vex3pel" path="res://Assets/Imagem/file.png" id="1_ep0u3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfab1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5hyl"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwruq"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6s3s"]
+bg_color = Color(0.0295066, 0.0295066, 0.0295065, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyiid"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ViewMemory" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_vfab1")
+script = ExtResource("1_bqjea")
+
+[node name="color" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="item" type="VBoxContainer" parent="." node_paths=PackedStringArray("shortcut_context")]
+layout_mode = 2
+shortcut_context = NodePath("..")
+
+[node name="Icon" type="TextureRect" parent="item" node_paths=PackedStringArray("shortcut_context")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+shortcut_context = NodePath("../..")
+texture = ExtResource("1_ep0u3")
+expand_mode = 1
+
+[node name="name" type="Label" parent="item"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "<nome>"
+horizontal_alignment = 1
+
+[node name="pop_up" type="PopupMenu" parent="."]
+canvas_item_default_texture_filter = 0
+size = Vector2i(109, 62)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_n5hyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwruq")
+item_count = 2
+item_0/text = "Deletar"
+item_0/id = 0
+item_1/text = "Renomear"
+item_1/id = 1
+
+[node name="rename" type="PopupPanel" parent="."]
+initial_position = 2
+size = Vector2i(300, 50)
+
+[node name="style" type="PanelContainer" parent="rename"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 296.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d6s3s")
+
+[node name="root" type="VBoxContainer" parent="rename/style"]
+layout_mode = 2
+
+[node name="nome" type="HBoxContainer" parent="rename/style/root"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="nome" type="Label" parent="rename/style/root/nome"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Nome:"
+
+[node name="rename" type="LineEdit" parent="rename/style/root/nome"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_vyiid")
+placeholder_text = "Nome da pasta"
+
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="id_pressed" from="pop_up" to="." method="_on_pop_up_id_pressed"]
+[connection signal="popup_hide" from="rename" to="." method="_on_rename_popup_hide"]
+[connection signal="text_changed" from="rename/style/root/nome/rename" to="." method="_on_rename_text_changed"]

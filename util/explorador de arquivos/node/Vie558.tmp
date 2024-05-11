@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1k2125anfahc"]
+
+[ext_resource type="Script" path="res://util/explorador de arquivos/script_node/ViewMemory.gd" id="1_bqjea"]
+[ext_resource type="Texture2D" uid="uid://dogiw4vex3pel" path="res://Assets/Imagem/file.png" id="1_ep0u3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jw7o"]
+bg_color = Color(0.796078, 0.87451, 0.968627, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v54e4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdamm"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5hyl"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwruq"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="ViewMemory" type="PanelContainer" node_paths=PackedStringArray("shortcut_context")]
+offset_right = 100.0
+offset_bottom = 100.0
+shortcut_context = NodePath("")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8jw7o")
+script = ExtResource("1_bqjea")
+
+[node name="item" type="VBoxContainer" parent="." node_paths=PackedStringArray("shortcut_context")]
+layout_mode = 2
+shortcut_context = NodePath("..")
+
+[node name="Icon" type="TextureRect" parent="item" node_paths=PackedStringArray("shortcut_context")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+shortcut_context = NodePath("../..")
+texture = ExtResource("1_ep0u3")
+expand_mode = 1
+
+[node name="LineEdit" type="LineEdit" parent="item"]
+layout_mode = 2
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_v54e4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kdamm")
+text = "<nome>"
+placeholder_text = "Arquigo não pode ficar sem nome"
+alignment = 1
+
+[node name="pop_up" type="PopupMenu" parent="."]
+canvas_item_default_texture_filter = 0
+size = Vector2i(109, 62)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_n5hyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwruq")
+item_count = 2
+item_0/text = "Deletar"
+item_0/id = 0
+item_1/text = "Renomear"
+item_1/id = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="id_pressed" from="pop_up" to="." method="_on_pop_up_id_pressed"]

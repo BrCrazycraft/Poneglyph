@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbue6xid2s6y6"]
+
+[ext_resource type="Script" path="res://teste/Teste.gd" id="1_x36as"]
+[ext_resource type="PackedScene" uid="uid://d02f8swptjv3" path="res://util/explorador de arquivos/node/TreeMemory.tscn" id="2_o4ajw"]
+
+[node name="Teste" type="CanvasLayer"]
+script = ExtResource("1_x36as")
+
+[node name="TreeMemory" parent="." instance=ExtResource("2_o4ajw")]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbrg7hbsagnf2"]
+[gd_scene load_steps=6 format=3 uid="uid://bbrg7hbsagnf2"]
 
 [ext_resource type="Script" path="res://src/index/index.gd" id="1_cbe8m"]
 [ext_resource type="FontFile" uid="uid://djvhpjbf7msdr" path="res://Assets/Font/Dragon FREE.ttf" id="1_vw824"]
+[ext_resource type="Texture2D" uid="uid://dxpc1drhr3v6a" path="res://Assets/Imagem/back.jpg" id="2_63qrh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aj4u"]
 
@@ -10,6 +11,21 @@ bg_color = Color(0.548963, 0.548963, 0.548962, 1)
 
 [node name="Index" type="CanvasLayer"]
 script = ExtResource("1_cbe8m")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -269.0
+offset_top = -151.0
+offset_right = 269.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="BoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_63qrh")
 
 [node name="style" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -36,7 +52,7 @@ horizontal_alignment = 1
 
 [node name="sub" type="Label" parent="style/root/Title"]
 layout_mode = 2
-text = "v0.1"
+text = "v0.2"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -125,14 +141,13 @@ uri = "https://ai.google.dev/"
 [node name="Project" type="HBoxContainer" parent="configurações/Config/mensagem"]
 layout_mode = 2
 
+[node name="btn_caminho" type="Button" parent="configurações/Config/mensagem/Project"]
+layout_mode = 2
+text = "Caminho"
+
 [node name="lbl_path" type="Label" parent="configurações/Config/mensagem/Project"]
 layout_mode = 2
-text = "Projeto:"
-
-[node name="text_path" type="LineEdit" parent="configurações/Config/mensagem/Project"]
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "Caminho para projeto"
+text = "c:/"
 
 [node name="btn_salvar" type="Button" parent="configurações/Config/mensagem"]
 layout_mode = 2
@@ -141,4 +156,5 @@ text = "Salvar"
 [connection signal="pressed" from="style/root/Novo Projeto" to="." method="_on_novo_projeto_pressed"]
 [connection signal="pressed" from="style/root/Config" to="." method="_on_config_pressed"]
 [connection signal="pressed" from="configurações/Config/mensagem/PanelContainer/painel/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="configurações/Config/mensagem/Project/btn_caminho" to="." method="_on_btn_caminho_pressed"]
 [connection signal="pressed" from="configurações/Config/mensagem/btn_salvar" to="." method="_on_btn_salvar_pressed"]

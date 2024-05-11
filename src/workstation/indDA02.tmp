@@ -1,0 +1,189 @@
+[gd_scene load_steps=7 format=3 uid="uid://cupt0ejnibud3"]
+
+[ext_resource type="Script" path="res://src/workstation/index.gd" id="1_hnuve"]
+[ext_resource type="CodeHighlighter" uid="uid://blbdcrhls1owv" path="res://Assets/HighLight/logica.tres" id="1_li8ea"]
+[ext_resource type="Script" path="res://util/gemini/Api.gd" id="2_1nfqs"]
+[ext_resource type="PackedScene" uid="uid://d02f8swptjv3" path="res://util/explorador de arquivos/node/TreeMemory.tscn" id="3_vd262"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qe8a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwa7f"]
+bg_color = Color(0.6, 0.6, 0.6, 0.709804)
+
+[node name="MAIN" type="CanvasLayer"]
+script = ExtResource("1_hnuve")
+
+[node name="GeminiAPI" type="HTTPRequest" parent="."]
+use_threads = true
+script = ExtResource("2_1nfqs")
+
+[node name="root" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="style-menu" type="PanelContainer" parent="root"]
+layout_mode = 2
+
+[node name="menu" type="HBoxContainer" parent="root/style-menu"]
+layout_mode = 2
+
+[node name="style-doc" type="PanelContainer" parent="root/style-menu/menu"]
+layout_mode = 2
+
+[node name="doc" type="LinkButton" parent="root/style-menu/menu/style-doc"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxFlat_4qe8a")
+text = "Documentação"
+uri = "https://brcrazycraft.github.io/Poneglyph-Doc/index.html"
+
+[node name="sair" type="Button" parent="root/style-menu/menu"]
+layout_mode = 2
+text = "Sair
+"
+
+[node name="exportar" type="Button" parent="root/style-menu/menu"]
+layout_mode = 2
+text = "Exportar"
+
+[node name="style-space" type="PanelContainer" parent="root"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="space-menu" type="HBoxContainer" parent="root/style-space"]
+layout_mode = 2
+
+[node name="style-tree" type="PanelContainer" parent="root/style-space/space-menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="tree" type="VBoxContainer" parent="root/style-space/space-menu/style-tree"]
+layout_mode = 2
+
+[node name="root" type="ScrollContainer" parent="root/style-space/space-menu/style-tree/tree"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwa7f")
+
+[node name="tree" type="VBoxContainer" parent="root/style-space/space-menu/style-tree/tree/root"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="lbl_project_name" type="Label" parent="root/style-space/space-menu/style-tree/tree/root/tree"]
+layout_mode = 2
+text = "<Nome do projeto>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="root" parent="root/style-space/space-menu/style-tree/tree/root/tree" instance=ExtResource("3_vd262")]
+layout_mode = 2
+block = true
+
+[node name="config" type="ScrollContainer" parent="root/style-space/space-menu/style-tree/tree"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="box" type="VBoxContainer" parent="root/style-space/space-menu/style-tree/tree/config"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lbl_expo" type="Label" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Exportação
+"
+horizontal_alignment = 1
+
+[node name="path" type="LineEdit" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+text = "P://exit"
+placeholder_text = "Caminho de exportação"
+editable = false
+
+[node name="Linguagem de exportação" type="OptionButton" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+item_count = 4
+selected = 2
+popup/item_0/text = "Pseudocódigo"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "Escrita"
+popup/item_1/id = 1
+popup/item_1/disabled = true
+popup/item_2/text = "Python"
+popup/item_2/id = 2
+popup/item_3/text = "Java"
+popup/item_3/id = 3
+popup/item_3/disabled = true
+
+[node name="terminal" type="Label" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Terminal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Terminal" type="Button" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+text = "Rodar python"
+
+[node name="lbl_log" type="Label" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "LOG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Log_Menssage" type="Label" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+text = "Sem Mensagem de log
+"
+
+[node name="Container" type="VBoxContainer" parent="root/style-space/space-menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="lbl_open" type="Label" parent="root/style-space/space-menu/Container"]
+layout_mode = 2
+text = "Sem codigo aberto"
+
+[node name="CodeEdit" type="CodeEdit" parent="root/style-space/space-menu/Container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/background_color = Color(0.176419, 0.176419, 0.176419, 1)
+scroll_fit_content_height = true
+syntax_highlighter = ExtResource("1_li8ea")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_tabs = true
+gutters_draw_bookmarks = true
+gutters_draw_line_numbers = true
+indent_automatic = true
+auto_brace_completion_highlight_matching = true
+
+[node name="salvando" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="message" type="Label" parent="salvando"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Aguarde... estamos exportando..."
+
+[connection signal="response" from="GeminiAPI" to="." method="_on_gemini_api_response"]
+[connection signal="pressed" from="root/style-menu/menu/sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="root/style-menu/menu/exportar" to="." method="_on_exportar_pressed"]
+[connection signal="pressed" from="root/style-space/space-menu/style-tree/tree/config/box/Terminal" to="." method="_on_terminal_pressed"]
+[connection signal="text_changed" from="root/style-space/space-menu/Container/CodeEdit" to="." method="_on_code_edit_text_changed"]

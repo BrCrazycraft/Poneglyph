@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://d02f8swptjv3"]
+
+[ext_resource type="Texture2D" uid="uid://ml27nw7j1d5g" path="res://Assets/Imagem/folder.png" id="1_i2uk4"]
+[ext_resource type="Script" path="res://util/explorador de arquivos/script_node/TreeMemory.gd" id="1_qsyhp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xc1yt"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h3bk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcvdv"]
+bg_color = Color(0.0295066, 0.0295066, 0.0295065, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p54wr"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syw2q"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtq5r"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="TreeMemory" type="PanelContainer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -16.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xc1yt")
+script = ExtResource("1_qsyhp")
+
+[node name="root" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="fold" type="HBoxContainer" parent="root"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="root/fold"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("1_i2uk4")
+expand_mode = 2
+
+[node name="name" type="Label" parent="root/fold"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "<Nome>"
+
+[node name="style_element" type="PanelContainer" parent="root"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3h3bk")
+
+[node name="tree" type="GridContainer" parent="root/style_element"]
+layout_mode = 2
+columns = 2
+
+[node name="Renomear" type="PopupPanel" parent="."]
+size = Vector2i(131, 100)
+
+[node name="style" type="PanelContainer" parent="Renomear"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 127.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kcvdv")
+
+[node name="root" type="VBoxContainer" parent="Renomear/style"]
+layout_mode = 2
+
+[node name="nome" type="HBoxContainer" parent="Renomear/style/root"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="nome" type="Label" parent="Renomear/style/root/nome"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Nome:"
+
+[node name="rename" type="LineEdit" parent="Renomear/style/root/nome"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_p54wr")
+placeholder_text = "Nome da pasta"
+
+[node name="pop_up" type="PopupMenu" parent="."]
+canvas_item_default_texture_filter = 0
+size = Vector2i(109, 62)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_syw2q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mtq5r")
+item_count = 2
+item_0/text = "Deletar"
+item_0/id = 0
+item_1/text = "Renomear"
+item_1/id = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

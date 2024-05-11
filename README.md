@@ -1,11 +1,10 @@
 # Poneglyph
-Um projeto de código aberto que traduz pseudocódigo em código Python, usando Gemini como motor para a tradução [Projeto Alura].
+Um projeto de código aberto que traduz pseudocódigo em código Python, usando Gemini como motor para a tradução. [Projeto Alura]
 
 ### Índices
-- <a href="#Uso">Modo de uso</a>
-- <a href="#Sintaxe">Sintaxe de Documentação</a>
-- <a href="#Estado">Estado do Projeto</a>
-
+<a href="#Uso">Modo de uso</a>
+<a href="#Sintaxe">Sintaxe de Documentação</a>
+<a href="#Estado">Estado do Projeto</a>
 ## Uso
 ### Usuário Windows
 Possui um exe na pasta exit, um é com console => Quem sabe você não vê um print que eu esqueci no código, e o outro é normal.
@@ -13,46 +12,43 @@ Possui um exe na pasta exit, um é com console => Quem sabe você não vê um pr
 [Download Normal](./exit/project.exe)
 
 ### Configuração inicial
+### Video de Demonstração
+Um pequeno video demonstrando, eu usando a ferramenta.
+
+[Demonstração]
+
 Você começa indo em configurações e colando sua chave API e o caminho do projeto
-![ConfigurandoCentral](./Assets/Doc/doc_config.jpg)
+
+![ConfigurandoCentral](./Assets/Doc/novas/novo%20menu.jpg)
+
+clicando em caminho você abriar uma tela para você selecionar a pasta do seu projeto.
+
+![ConfigurandoCaminho](./Assets/Doc/novas/doc_folder.jpg)
 
 ### Abrindo Projeto
 Após configurado, certifique-se de que o caminho está ok e que sua API_KEY está correta. Você irá iniciar e cair no hub, ele tem 4 opções em cima:
 
 - Documentação : te redireciona para uma página com a sintaxe
 - Sair : fecha o programa
-- Salvar : salva o projeto em .wano com o pseudocódigo
 - Exportar : salva e converte o código para .py
 
-Note que acima da área de editar o código está escrito "null.txt" - isso significa que não há nenhum arquivo aberto. Vamos começar a resolver isso.
+Note que acima da área de editar o código está escrito "Sem código", e só clicar no nome do arquivo no lado. Espera, você não tem arquivo?
 
-![HubDoPrograma](./Assets/Doc/doc_hub.jpg)
+![HubDoPrograma](./Assets/Doc/novas/novaui.jpg)
 
-## Pasta
-O projeto ainda não tem pasta, então mesmo que o diretório tenha uma pasta você terá que criar uma nova pasta e só clicar em nova pasta.
+### Criando pasta e arquivo
+Agora criar arquivos e pastas é mais fácil, clique com botão direito na pasta que deseja criar, e você verá 2 opções: criar arquivos e criar pasta.
 
-![NovaPasta](./Assets/Doc/doc_pasta.jpg)
+### Construido o projeto e testando
+Depois de escrever o seu código, está na hora de clicar no botão exportar, ele irá gerar um arquivo .py.
 
-De forma intuitiva, é só preencher com o nome da pasta. Se a pasta tiver o mesmo nome de uma pasta já existente na raiz, o projeto é capaz de salvar nela. Após criar uma pasta, você verá que tem um botão chamado config. Nele você pode apagar a pasta (ela vai ser movida para a lixeira do PC) ou criar um novo arquivo.
+![Material](./Assets/Doc/novas/convert.jpg)
 
-![PastaTree](./Assets/Doc/doc_arquivo_open.jpg)
+ Após abrir ele, você poderá clicar no botão Rodar Python, caso o arquivo aberto não seja Python o programa não irá rodar, e lembre-se de ter o Python 3 na sua máquina.
 
-## Arquivos
-Para criar um novo arquivo é bem simples, você preenche com o nome e a linguagem que irá usar (Atualmente só pseudocódigo).
+ ![Terminal](./Assets/Doc/novas/terminal%20com%20saida.jpg)
 
-![NovoArquivo](./Assets/Doc/doc_arquivo_novo.jpg)
-
-Clicando em criar, surgirá um novo arquivo na pasta.
-
-![TreeArquivo](./Assets/Doc/doc_arquivo_open.jpg)
-
-Com isso é só você dar um clique no nome que o null.txt irá sumir pelo diretório do futuro arquivo.
-
-![ArquivoAberto](./Assets/Doc/doc_pseudo_codigo.jpg)
-
-Com isso você está pronto para escrever código em português e deixar o Gemini se virar para traduzir isso em Python. Depois de clicar em exportar, é só ir no diretório que seu arquivo .py estará lá.
-
-Lembre-se, isso está em desenvolvimento, pode ser que falhe.
+Pronto você pode agora brincar o quanto quiser, escrevendo em português e vendo rodar em outras línguas.   
 
 ## Sintaxe
 A sintaxe pode ser lida em outra documentação de site -> Bem mais feio
@@ -65,12 +61,12 @@ Lista de funções pensadas e adicionadas:
 - [x] Interface para escrever código com marcação
 - [x] Leitor e tradutor de pseudocódigo para Python
 - [x] Criar um projeto e o salva-lo
-- [ ] Organizar e refatorar o código
+- [X] Organizar e refatorar o código
 - [ ] Tratamento de erro na API_KEY
-- [ ] Sistema que salva a chave em documentos
-- [ ] Melhorar sistema de pasta
-- [ ] Permitir carregar projetos
-- [ ] Adicionar um terminal para teste
+- [X] Sistema que salva a chave em documentos
+- [X] Melhorar sistema de pasta
+- [X] Permitir carregar projetos
+- [X] Adicionar um terminal para teste
 - [ ] Exportar para outras linguagens
 - [ ] Sistema sincronizado de biblioteca com exportação Python
 - [ ] Opção de idioma para a pseudo linguagem
@@ -84,4 +80,4 @@ Lista de funções pensadas e adicionadas:
 
 Se não tem dinheiro para fazer, faça você mesmo, mesmo que o código fique um espaguete.
 
-{Tempo de produção 12h}
+{Tempo de produção 22h}

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfrhxnafkcl57"]
+
+[ext_resource type="Script" path="res://util/explorador de arquivos/script_node/index.gd" id="1_xupm6"]
+
+[node name="Index" type="Window"]
+title = "File Explore"
+size = Vector2i(500, 500)
+script = ExtResource("1_xupm6")

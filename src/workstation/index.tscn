@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://src/workstation/index.gd" id="1_hnuve"]
 [ext_resource type="CodeHighlighter" uid="uid://blbdcrhls1owv" path="res://Assets/HighLight/logica.tres" id="1_li8ea"]
-[ext_resource type="Script" path="res://src/gemini/Api.gd" id="2_1nfqs"]
-[ext_resource type="PackedScene" uid="uid://cwny48r00hxf5" path="res://src/workstation/node/container/SuperTree.tscn" id="3_ogifx"]
+[ext_resource type="Script" path="res://util/gemini/Api.gd" id="2_1nfqs"]
+[ext_resource type="PackedScene" uid="uid://d02f8swptjv3" path="res://util/explorador de arquivos/node/TreeMemory.tscn" id="3_vd262"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qe8a"]
 
@@ -45,10 +45,6 @@ layout_mode = 2
 text = "Sair
 "
 
-[node name="salvar" type="Button" parent="root/style-menu/menu"]
-layout_mode = 2
-text = "Salvar"
-
 [node name="exportar" type="Button" parent="root/style-menu/menu"]
 layout_mode = 2
 text = "Exportar"
@@ -84,8 +80,9 @@ text = "<Nome do projeto>"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SuperTree" parent="root/style-space/space-menu/style-tree/tree/root/tree" instance=ExtResource("3_ogifx")]
+[node name="root" parent="root/style-space/space-menu/style-tree/tree/root/tree" instance=ExtResource("3_vd262")]
 layout_mode = 2
+block = true
 
 [node name="config" type="ScrollContainer" parent="root/style-space/space-menu/style-tree/tree"]
 layout_mode = 2
@@ -106,6 +103,7 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "P://exit"
 placeholder_text = "Caminho de exportação"
+editable = false
 
 [node name="Linguagem de exportação" type="OptionButton" parent="root/style-space/space-menu/style-tree/tree/config/box"]
 layout_mode = 2
@@ -123,15 +121,39 @@ popup/item_3/text = "Java"
 popup/item_3/id = 3
 popup/item_3/disabled = true
 
+[node name="terminal" type="Label" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Terminal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Terminal" type="Button" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+text = "Rodar python"
+
+[node name="lbl_log" type="Label" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "LOG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Log_Menssage" type="Label" parent="root/style-space/space-menu/style-tree/tree/config/box"]
+layout_mode = 2
+text = "Sem Mensagem de log
+"
+
 [node name="Container" type="VBoxContainer" parent="root/style-space/space-menu"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="lbl_open" type="Label" parent="root/style-space/space-menu/Container"]
 layout_mode = 2
-text = "null.txt"
+text = "Sem codigo aberto"
 
 [node name="CodeEdit" type="CodeEdit" parent="root/style-space/space-menu/Container"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -162,6 +184,6 @@ text = "Aguarde... estamos exportando..."
 
 [connection signal="response" from="GeminiAPI" to="." method="_on_gemini_api_response"]
 [connection signal="pressed" from="root/style-menu/menu/sair" to="." method="_on_sair_pressed"]
-[connection signal="pressed" from="root/style-menu/menu/salvar" to="." method="_on_salvar_pressed"]
 [connection signal="pressed" from="root/style-menu/menu/exportar" to="." method="_on_exportar_pressed"]
+[connection signal="pressed" from="root/style-space/space-menu/style-tree/tree/config/box/Terminal" to="." method="_on_terminal_pressed"]
 [connection signal="text_changed" from="root/style-space/space-menu/Container/CodeEdit" to="." method="_on_code_edit_text_changed"]
